@@ -31,3 +31,29 @@ print(matrix[4:6])
 
 pi =f'{np.pi}'
 print(pi)
+
+
+
+'''2364. Count Number of Bad Pairs'''
+from collections import defaultdict
+def countBadPairs(nums) -> int:
+    ## Check complement? All possible bad pairs - good pairs
+    # should be (n-1) + (n-2) + ... + 1  possible pairs?
+    good = 0
+    total = 0
+    count = defaultdict(int)
+    for i in range(len(nums)):
+        total += i
+        good += count[nums[i] - i]
+        count[nums[i] - i] += 1
+    return total - good
+'''Brute force'''
+'''
+def countBadPairs(nums) -> int:
+     bad = 0
+     for i in range(len(nums)-1):
+         for j in range(i+1, len(nums)):
+             if j-i != nums[j] - nums[i]:
+                 bad += 1
+     return bad
+'''
