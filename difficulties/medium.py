@@ -1,5 +1,5 @@
-#medium.py
-import numpy as np
+'''medium problems'''
+#import numpy as np
 
 '''209. Minimum Size Subarray Sum'''
 def minSubArrayLen(target: int, nums) -> int:
@@ -26,11 +26,11 @@ def minSubArrayLen(target: int, nums) -> int:
 #print(y.issubset(x))
 #
 
-matrix = [[col+1 for col in range(9)] for row in range(9)]
-print(matrix[4:6])
-
-pi =f'{np.pi}'
-print(pi)
+#matrix = [[col+1 for col in range(9)] for row in range(9)]
+#print(matrix[4:6])
+#
+#pi =f'{np.pi}'
+#print(pi)
 
 
 
@@ -57,3 +57,41 @@ def countBadPairs(nums) -> int:
                  bad += 1
      return bad
 '''
+
+
+
+'''1910. Remove All occurrences of a Substring'''
+def removeOccurrences(s: str, part: str) -> str:
+    
+    i =0
+    part = 'abc'
+    while i <= len(s) - len(part):
+        if s[i:i + len(part)] == part:
+           print(s)
+           s = s[:i] + s[i+len(part):]
+           i = 0
+        i += 1
+    return s
+#print(removeOccurrences(s = 'daabcbaabcbc',part='abc'))
+
+# expected "dab"
+
+s = '0123456789'
+print(s[0:9])
+
+'''Find Largest trapped region of water, solved wrong question LOL'''
+def trap(height) -> int:
+    max_water = 0
+    left = 0
+    right = len(height) - 1
+    while right > left -1:
+        bottom = right - left
+        tot_area = bottom * min(height[left], height[right])
+        # Now remove the occupied water
+        water = tot_area - sum(height[left: right]) 
+        max_water = max(max_water, water)
+        if height[left] > height[right]:
+            right -= 1
+        else:
+            left += 1
+    return max_water
