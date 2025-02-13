@@ -76,22 +76,46 @@ def removeOccurrences(s: str, part: str) -> str:
 
 # expected "dab"
 
-s = '0123456789'
-print(s[0:9])
+#s = '0123456789'
+#print(s[0:9])
 
-'''Find Largest trapped region of water, solved wrong question LOL'''
-def trap(height) -> int:
-    max_water = 0
-    left = 0
-    right = len(height) - 1
-    while right > left -1:
-        bottom = right - left
-        tot_area = bottom * min(height[left], height[right])
-        # Now remove the occupied water
-        water = tot_area - sum(height[left: right]) 
-        max_water = max(max_water, water)
-        if height[left] > height[right]:
-            right -= 1
-        else:
-            left += 1
-    return max_water
+
+def minOperations(nums, k: int) -> int:
+    # First sort list,
+    # then add together the operand on the bottom
+    def weird_operand(bottom):
+        x,y = bottom
+        return [min(x,y) * 2 + max(x,y)]
+    
+    def quicksort(nums):
+        if len(nums) <= 1:
+            return nums
+        pivot = nums[-1]
+        greater = []
+        lower = []
+        for element in nums[:-1]: # exclude pivot
+            if element >= pivot:
+                greater.append(element)
+            else:
+                lower.append(element)
+        return quicksort(lower) + [pivot] + quicksort(greater)
+    
+
+    nums = quicksort(nums)
+    operands = 0
+    while nums[0] < k:
+        operands += 1
+        nums = nums[2:] + weird_operand(nums[:2]) 
+    return operands
+
+
+
+import heapq
+values = [9,98,52,8]
+values2 = [9,98,52,8]
+print(values)
+heapq.heapify(values)
+heapq.heapify(values2[:])
+print(values)
+print(values2)
+#print(minOperations([9,98,52,8], 98))

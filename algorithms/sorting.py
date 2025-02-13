@@ -9,13 +9,13 @@ def pro1():
         else:
             pivot = array[-1]
             lower = [x for x in array[:-1] if x < pivot]
-            greater = [x for x in array[:-1] if x >= pivot]
+            greater = [x for x in array[:-1] if x > pivot]
             return quick_sort(lower) + [pivot] + quick_sort(greater)
 
-    array = [64, 34, 25, 12, 22, 11, 90]
-    sorted_array = quick_sort(array)
-    print(sorted_array)
-
+    #array = [64, 34, 25, 12, 22, 11, 90]
+    #sorted_array = quick_sort(array)
+    #print(sorted_array)
+ 
 
 
 '''List to hastable -> {index, value}'''
@@ -69,4 +69,23 @@ def pro3():
     print(threeSum([-1,0,1,2,-1,-4]))  
 
 
-pro3()
+
+
+
+def quicksort2(nums): 
+    if len(nums) <= 1:
+        return nums
+    else:
+        bottom = []
+        top = []
+        pivot = nums[-1]
+        for element in nums[:-1]:
+            if element < pivot:  
+                bottom.append(element)
+            else:
+                top.append(element)
+        return quicksort2(bottom) + [pivot] + quicksort2(top)
+    
+ad =  [64, 34, 25, 12, 22, 11, 90]
+print(ad[:2])
+#print(quicksort2( [64, 34, 25, 12, 22, 11, 90]))
