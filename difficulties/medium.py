@@ -110,12 +110,61 @@ def minOperations(nums, k: int) -> int:
 
 
 
-import heapq
-values = [9,98,52,8]
-values2 = [9,98,52,8]
-print(values)
-heapq.heapify(values)
-heapq.heapify(values2[:])
-print(values)
-print(values2)
+#import heapq
+#values = [9,98,52,8]
+#values2 = [9,98,52,8]
+#print(values)
+#heapq.heapify(values)
+#heapq.heapify(values2[:])
+#print(values)
+#print(values2)
 #print(minOperations([9,98,52,8], 98))
+#values = [1,2,3,4,5,6,7,8,9]
+#k = 4
+#s = 1
+#for i in range(k):
+#    s *= values[-(i+1)]
+#    print(s)
+
+
+import itertools
+
+def punishmentNumberFake( n: int) -> int:
+    # start with brute-fore
+    # Find punishment number
+    def isPunishment(fish : int) -> int:
+        sfish = list(map(int, str(fish**2)))
+        for L in range(fish +1):
+            for subset in itertools.combinations(sfish, L):
+                if sum(subset) == fish:
+                    print(subset)
+                    return int(''.join(map(str, subset)))
+        return 0
+    run = 0
+    for i in range(1,n):
+        run += isPunishment(i)
+        
+    return run
+
+def punishmentNumber( n: int) -> int:
+    res = 0
+
+    def isPunishment(i: int, cur: int, target: int, sub: str):
+        if cur>target: # Early break
+            return False
+    
+        if i == len(sub) and cur == target:
+            return True
+        
+        for j in range(i ,len(sub)):
+            if isPunishment(j+1, cur + int(sub[i:j+1]), target, sub):
+                return True
+        return False
+    
+
+    for i in range(1,n+1):
+        if isPunishment(0,0, i, str(i*i)):
+            res += i**2
+    return res
+            
+print(punishmentNumber(10))
