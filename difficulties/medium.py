@@ -167,4 +167,41 @@ def punishmentNumber( n: int) -> int:
             res += i**2
     return res
             
-print(punishmentNumber(10))
+#print(punishmentNumber(10))
+
+
+
+
+
+
+class Solution:
+    def constructDistancedSequence(self, n: int):
+        # The length of the sequence is 2*n - 1
+        trial = [0] * ((2 * n) - 1)
+        
+        def backtrack(num: int) -> bool:
+            # Base case: 
+            if num == 1:
+                for i in range(len(trial)):
+                    if trial[i] == 0:
+                        trial[i] = 1
+                        return True
+                    
+            for i in range(len(trial) - num):
+                if trial[i] == 0 and trial[i + num ] == 0:
+                    
+                    trial[i] = num
+                    trial[i + num] = num
+                    # Recursively place the next smaller number
+                    if backtrack(num - 1):
+                        return True
+                    trial[i] = 0
+                    trial[i + num ] = 0
+            
+            return False
+
+        backtrack(n)
+        return trial
+
+# Example usage:
+print(Solution().constructDistancedSequence(5))
