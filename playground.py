@@ -18,7 +18,7 @@ def fib_mem(n : int, memo : dict=None):
     memo[n] = fib_mem(n - 1,memo) + fib_mem(n - 2,memo)
     #print(list(memo.values())[-1])
     return memo[n]
-n = 10
+
 
 # Bottom-Up 
 def fib_bot_up(n:int)->int:
@@ -31,13 +31,29 @@ def fib_bot_up(n:int)->int:
         btmup[i] = btmup[i-1] + btmup[i-2]
     return btmup[n-1]
 
+n = 10
+iterations = 500000
 
-iterations = 1000000
+print("Running fib_rec (recursion):")
+start_time = time.time()
+for _ in tqdm(range(iterations), desc="fib_mem rec"):
+    result_mem = fib_rec(n)
+end_time = time.time()
+
+
+
+print(f"Result: {result_mem}")
+print(f"Total time for {iterations} iterations of fib_mem: {end_time - start_time:.4f} seconds")
+print(f"Average time per call: {(end_time - start_time) / iterations:.8f} seconds")
+
+
+
 print("Running fib_mem (memoized recursion):")
 start_time = time.time()
 for _ in tqdm(range(iterations), desc="fib_mem iterations"):
     result_mem = fib_mem(n)
 end_time = time.time()
+
 print(f"Result: {result_mem}")
 print(f"Total time for {iterations} iterations of fib_mem: {end_time - start_time:.4f} seconds")
 print(f"Average time per call: {(end_time - start_time) / iterations:.8f} seconds")

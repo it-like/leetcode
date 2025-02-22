@@ -72,10 +72,10 @@ def letterCombinations( digits: str):
 
 
 '''3160. Find the Number of Distinct Colors Among the Balls'''
-d = {'1': 'blue'}
-d['2'] = 'orange'
-for k,v in d.items():
-    print(k)
+#d = {'1': 'blue'}
+#d['2'] = 'orange'
+#for k,v in d.items():
+#    print(k)
 
 
 
@@ -89,3 +89,61 @@ def subarraySum(nums) -> int:
         res += sum(nums[start:i+1])
     return res
             
+
+
+
+'''83. Removed Duplicate from Sorted List'''
+# Definition for singly-linked list.
+class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
+
+def deleteDuplicates(head):
+    left = head
+    res = ListNode(0,head)
+    right = head.next
+   
+    while right.next:
+        while left.val == right.val:
+            if right.next is None:
+                break
+            right = right.next
+        left.next = right
+        left = right
+    return res.next
+            
+#list = []
+#print(deleteDuplicates([1,1,2]))
+
+
+for combination in reversed(range(2**2)):
+        s_b_value = str(bin(combination))[2:]
+        if len(s_b_value) < 2:
+            print('here')
+            s_b_value = s_b_value.ljust(2,'0')
+        print(s_b_value)
+
+
+
+
+'''78. subsets'''
+def subsets(nums):
+    if not nums:
+        return nums
+    # Backtracking problem  
+    ret = []
+
+    def back(start, path):
+
+        ret.append(path[:])
+
+        for i in range(start, len(nums)):
+
+            path.append(nums[i])
+            back((i+1), path)
+
+            path.pop() # Remove old prev
+
+    back(0, [])
+    return ret
