@@ -203,5 +203,57 @@ class Solution:
         backtrack(n)
         return trial
 
-# Example usage:
-print(Solution().constructDistancedSequence(5))
+
+#print(Solution().constructDistancedSequence(5))
+print(max(x**2 for x in range(4)))
+
+
+'''78. subsets'''
+def subsets(nums):
+    # Backtracking problem  
+    ret = []
+
+    def back(start, path):
+
+        ret.append(path[:])
+
+        for i in range(start, len(nums)):
+
+            path.append(nums[i])
+            back((i+1), path)
+
+            path.pop() # Remove old prev
+
+    back(0, [])
+    return ret
+
+#print(subsets([1,2,3]))
+
+
+'''39. Combination Sum'''
+def combinationSum(candidates, target)-> list:
+    # For element in 
+    ret = []
+    def dfs(i, cur, val):
+        if val == target:
+            ret.append(cur.copy())
+            return
+        if val > target or i>= len(candidates):
+            return
+
+        
+        cur.append(candidates[i])
+        # Case 1
+        dfs(i, cur, val + candidates[i])
+        # Case 2
+        cur.pop()
+        dfs(i+1, cur, val)
+
+
+    dfs(0,[],0)
+    return ret
+
+print(combinationSum([1,2,3],5))
+
+    
+    

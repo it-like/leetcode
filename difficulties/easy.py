@@ -126,24 +126,3 @@ for combination in reversed(range(2**2)):
 
 
 
-
-'''78. subsets'''
-def subsets(nums):
-    if not nums:
-        return nums
-    # Backtracking problem  
-    ret = []
-
-    def back(start, path):
-
-        ret.append(path[:])
-
-        for i in range(start, len(nums)):
-
-            path.append(nums[i])
-            back((i+1), path)
-
-            path.pop() # Remove old prev
-
-    back(0, [])
-    return ret
