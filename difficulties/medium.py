@@ -205,7 +205,7 @@ class Solution:
 
 
 #print(Solution().constructDistancedSequence(5))
-print(max(x**2 for x in range(4)))
+#print(max(x**2 for x in range(4)))
 
 
 '''78. subsets'''
@@ -253,7 +253,46 @@ def combinationSum(candidates, target)-> list:
     dfs(0,[],0)
     return ret
 
-print(combinationSum([1,2,3],5))
+#print(combinationSum([1,2,3],5))
 
     
     
+
+def lenLongestFibSubseq(arr) -> int:
+    # Bruteforce
+    def dp(i,j,k,cur):
+        if k >= len(arr):
+            return
+        if arr[i] + arr[j] == arr[k]:
+            cur += 1
+            dp(j,k,k+1,cur)
+        # Either move forward k alone or j and k!
+        # Move k, value currently too small
+        if arr[i] + arr[j] > arr[k]:
+            dp(i,j,k+1,cur)
+        if arr[i] + arr[j] < arr[k]: # Move forward
+            dp(i,j+1,k+1,cur)
+        
+        return cur
+            
+    cmax = 0
+    vals = [0] * len(arr)
+    i,j,k = 0,1,2
+    while i != len(arr)-1:
+        h=i
+        cur = dp(i,j,k,vals[h])
+        cmax = max(cmax,cur)
+        i += 1
+    
+    return cmax 
+a = [1,2,3,4,5,6,7,8]
+b= [1,3,7,11,12,14,18]
+print(lenLongestFibSubseq(b))
+           
+
+
+            
+
+
+
+                

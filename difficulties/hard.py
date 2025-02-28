@@ -14,3 +14,25 @@ def trap(height) -> int:
         else:
             left += 1
     return max_water
+
+
+
+'''1092. Shortest common Supersequence'''
+
+large = 'abac'
+small = 'cab'
+max_len = len(small) + len(large)
+l = 0
+r = 0
+for i in range(0,max_len):
+    clarge = large[:i+1]
+    if i <= len(small):  
+        csmall = small[-i:]
+    else:
+        csmall = small[:max_len-i]
+        clarge = large[i-len(large)+1:i]
+    print(csmall)
+    print(clarge)
+    if csmall == clarge:
+       print("Truuu")
+# bruh
