@@ -117,12 +117,56 @@ def deleteDuplicates(head):
 #print(deleteDuplicates([1,1,2]))
 
 
-for combination in reversed(range(2**2)):
-        s_b_value = str(bin(combination))[2:]
-        if len(s_b_value) < 2:
-            print('here')
-            s_b_value = s_b_value.ljust(2,'0')
-        print(s_b_value)
+#for combination in reversed(range(2**2)):
+#        s_b_value = str(bin(combination))[2:]
+#        if len(s_b_value) < 2:
+#            print('here')
+#            s_b_value = s_b_value.ljust(2,'0')
+#        print(s_b_value)
 
 
 
+
+
+
+
+def mergeArrays(nums1,nums2):
+    # Problem is that indexes will not be on same, but is okay
+    # as we just add their sum
+    ret = []
+    # Two pointer approach
+    one,two = 0,0
+    while one < len(nums1)  and two < len(nums2): 
+        id1 = nums1[one][0]
+        id2 = nums2[two][0]
+        val1 = nums1[one][1]
+        val2 = nums2[two][1]
+
+        if id1 == id2:
+            ret.append([id1, val1 + val2])
+            one += 1
+            two += 1
+        elif id1 < id2: 
+            ret.append([id1, val1])
+            one += 1
+        else: 
+            ret.append([id2, val2])
+            two += 1
+    # add last part, both can be here since one will be empty
+    if one < len(nums1):
+        for i in range(one,len(nums1)):
+            ret.append([nums1[i][0],nums1[i][1]])
+            one += 1
+            
+    if two < len(nums2):
+        for i in range(two,len(nums2)):
+            ret.append([nums2[i][0],nums2[i][1]])
+            two += 1
+    return ret
+
+#a =  [[2,4],[3,6],[5,5]]
+#b =  [[1,3],[4,3]]
+a = [[1,2],[2,3],[4,5]]
+b = [[1,4],[3,2],[4,1]]
+
+print(mergeArrays(a,b))

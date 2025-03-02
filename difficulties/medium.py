@@ -287,12 +287,4 @@ def lenLongestFibSubseq(arr) -> int:
     return cmax 
 a = [1,2,3,4,5,6,7,8]
 b= [1,3,7,11,12,14,18]
-print(lenLongestFibSubseq(b))
-           
-
-
-            
-
-
-
-                
+print(lenLongestFibSubseq(a))
