@@ -288,3 +288,21 @@ def lenLongestFibSubseq(arr) -> int:
 a = [1,2,3,4,5,6,7,8]
 b= [1,3,7,11,12,14,18]
 print(lenLongestFibSubseq(a))
+
+
+
+# New record on implementation! Less than 3 minutes
+def pivotArray(nums, pivot: int):
+    # First thought, quicksort approach
+    # Just one pass of quicksort should do it
+    lower = []
+    middle = []
+    upper = []
+    for num in nums:
+        if num < pivot:
+            lower.append(num)
+        elif num > pivot:
+            upper.append(num)
+        else:
+            middle.append(num)
+    return lower + middle + upper
