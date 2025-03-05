@@ -306,3 +306,43 @@ def pivotArray(nums, pivot: int):
         else:
             middle.append(num)
     return lower + middle + upper
+
+
+
+def checkPowersOfThree(n: int) -> bool:
+    # DP problem, can be 
+    # seen as take-skip 
+    # as values are distinct
+    powers = [3**i for i in range(16)] # Largest value
+    
+    r = len(powers) - 1
+    # find upper bound
+    while r >= 0 and powers[r] > n:
+        r -= 1
+
+    def dfs(i, target):
+        if target == 0:
+            return True
+        if i < 0 or target < 0:
+            return False
+        # Take
+        if dfs(i - 1, target - powers[i]):
+            return True
+        # Skip
+        if dfs(i - 1, target):
+            return True
+        
+        return False
+    
+    return dfs(r, n)    
+
+
+'''2579. Count Total Number of Colored Cells'''
+def coloredCells(n: int) -> int:
+    if n == 1:
+        return n
+    bricks = n * 2 - 1
+    for i in range(1,n):
+        bricks += (i * 2 - 1) * 2
+    return bricks
+
