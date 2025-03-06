@@ -166,7 +166,25 @@ def mergeArrays(nums1,nums2):
 
 #a =  [[2,4],[3,6],[5,5]]
 #b =  [[1,3],[4,3]]
-a = [[1,2],[2,3],[4,5]]
-b = [[1,4],[3,2],[4,1]]
+#a = [[1,2],[2,3],[4,5]]
+#b = [[1,4],[3,2],[4,1]]
+#
+#print(mergeArrays(a,b))
 
-print(mergeArrays(a,b))
+
+
+'''2965. Find Missing and Repeated Values'''
+def findMissingAndRepeatedValues(grid):
+    size = len(grid)
+    freq = {i+1: 0 for i in range(size**2)}
+
+    for row in grid:
+        for num in row:
+            freq[num] += 1
+            if freq[num] == 2:
+                repeated = num
+
+    missing = next(key for key, count in freq.items() if count == 0)
+    return [repeated, missing]
+
+#print(findMissingAndRepeatedValues([[9,1,7],[8,9,2],[3,4,6]]))
