@@ -285,9 +285,9 @@ def lenLongestFibSubseq(arr) -> int:
         i += 1
     
     return cmax 
-a = [1,2,3,4,5,6,7,8]
-b= [1,3,7,11,12,14,18]
-print(lenLongestFibSubseq(a))
+#a = [1,2,3,4,5,6,7,8]
+#b= [1,3,7,11,12,14,18]
+#print(lenLongestFibSubseq(a))
 
 
 
@@ -346,3 +346,35 @@ def coloredCells(n: int) -> int:
         bricks += (i * 2 - 1) * 2
     return bricks
 
+
+
+
+'''2523. Closest Prime Numbers in Range'''
+# Was 25% faster than all but very memory efficient
+def closestPrimes( left: int, right: int):
+    prime = []
+    pair = [-1,-1]
+    cmin = float('inf')
+    for i in range(left, right+1):
+        done = False
+        if i % 2 == 0 and i > 2: # do not even consider even if not 2
+            continue
+        upper = i // 2 -1 if  (i // 2 )%2 == 0 else i //2
+        for j in range(2,upper,1):
+            if i % j == 0: 
+                done = True
+                break # found divisible term, leave
+        if not done:
+            if i == 1: # corner case, if ever found will be at beginning
+                continue
+            else:
+                prime.append(i)
+            if len(prime)>1:
+                curmin = prime[-1] - prime[-2] # Two furthest back 
+                if curmin < cmin:
+                    pair = [prime[-2], prime[-1]]
+                    cmin = curmin
+                    if cmin <=2:
+                        return pair
+    return pair
+print(closestPrimes(901000,1000000))
