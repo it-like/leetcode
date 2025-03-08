@@ -188,3 +188,23 @@ def findMissingAndRepeatedValues(grid):
     return [repeated, missing]
 
 #print(findMissingAndRepeatedValues([[9,1,7],[8,9,2],[3,4,6]]))
+
+
+'''2379. Minimum Recolors to Get K Consecutive Black Blocks'''
+def minimumRecolors( blocks: str, k: int) -> int:
+    if len(blocks) < k: # if condition met, not possible
+        return 0
+    
+    white = blocks[:k].count('W')
+    mwhite = white
+    for i in range(k, len(blocks)):
+
+        if blocks[i] == 'W':
+            white += 1
+        
+        if blocks[i - k] =='W':
+            white -= 1
+
+        mwhite = min(mwhite, white)
+
+    return mwhite
