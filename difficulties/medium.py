@@ -377,4 +377,28 @@ def closestPrimes( left: int, right: int):
                     if cmin <=2:
                         return pair
     return pair
-print(closestPrimes(901000,1000000))
+#print(closestPrimes(901000,1000000))
+
+
+'''3208. Alternating Groups II'''
+def numberOfAlternatingGroups( colors, k: int) -> int:
+    n = len(colors)
+    if k > n:
+        return 0
+    if k == 1:
+        return n
+
+    # Increment when not same, else add nothing
+    diff = [1 if colors[i] != colors[(i + 1)%n] else 0 for i in range(n)]
+
+    
+    prefix = [0] * (2 * n + 1)
+    for i in range(2 * n): # Twice the length to represent cyclic
+        prefix[i + 1] = prefix[i] + diff[i % n]
+    count = 0
+
+    # Check if increments presented valid sequence
+    for i in range(n):
+        if prefix[i + k - 1] - prefix[i] == k - 1:
+            count += 1
+    return count
