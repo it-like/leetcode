@@ -402,3 +402,41 @@ def numberOfAlternatingGroups( colors, k: int) -> int:
         if prefix[i + k - 1] - prefix[i] == k - 1:
             count += 1
     return count
+
+
+
+'''3306. Count Substring Containing Every Vowel and K consonants II'''
+def countOfSubstrings(self, word: str, k: int) -> int:
+    # Some flag logic, move if flag not there
+    # This is a sliding window problem,
+    # add each rhs and subtract the lhs
+    def at_least(k):
+        wovel = defaultdict(int)
+        l = 0
+        cons = 0
+        res = 0
+        for r in range(len(word)):
+
+            if word[r] in "aeiou":
+                wovel[word[r]] += 1
+            else:
+                cons += 1
+            
+            while len(wovel) == 5 and cons >= k:
+                res += (len(word) - r)
+                if word[l] in "aeiou":
+                    wovel[word[l]] -= 1
+                else:
+                    cons -= 1
+                
+                if wovel[word[l]] == 0: # empty, pop from list
+                    wovel.pop(word[l])
+
+                l += 1
+
+        return res
+    
+    return at_least(k) - at_least(k+1)
+
+
+
