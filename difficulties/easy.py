@@ -208,3 +208,21 @@ def minimumRecolors( blocks: str, k: int) -> int:
         mwhite = min(mwhite, white)
 
     return mwhite
+
+
+
+'''2529. Maximum Count of Positive Integer and Negative Integer'''
+def maximumCount(nums: list)-> int:
+    zeros = 0
+    negatives = 0 
+
+    for num in nums:
+        if num < 0:
+            negatives += 1
+        elif num == 0:
+            zeros += 1
+        else:
+            break
+    return max(negatives, len(nums) - zeros - negatives)
+
+#print(maximumCount([5,20,66,1314]))
