@@ -457,3 +457,32 @@ def numberOfSubstrings(s: str) -> int:
                 count.pop(s[l])
             l+=1
     return res
+
+
+
+#values =[1,2,3,4,5,6]
+#i = 3
+#print(values[:i])
+#print(values[3:])
+
+
+
+def rob(self, nums) -> int:
+
+    if not nums:
+        return 0
+
+    n = len(nums)
+
+    if n == 1:
+        return nums[0]
+    # Tabulation
+    
+    dp = [0] * n
+    dp[0] = nums[0]
+    dp[1] = max(nums[0], nums[1])
+    
+    for i in range(2, n):
+        dp[i] = max(dp[i-1], dp[i-2] + nums[i])
+        
+    return dp[-1]
