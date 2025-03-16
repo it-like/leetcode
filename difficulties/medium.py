@@ -486,3 +486,32 @@ def rob(self, nums) -> int:
         dp[i] = max(dp[i-1], dp[i-2] + nums[i])
         
     return dp[-1]
+
+
+
+'''Minimum Time to Repair Cars'''
+
+def repairCars( ranks, cars: int) -> int:
+    # Check if in 'time' T, we can repair at least 'cars' cars.
+    def can_repair(time: int) -> bool:
+        total = 0
+        for r in ranks:
+            total += int((time / r)**(1/2))
+            if total >= cars:  # Early exit if we already meet or exceed the target.
+                return True
+        return total >= cars
+
+    # The worst-case maximum time is when the slowest mechanic repairs all cars.
+    lo, hi = 0, max(ranks) * cars ** 2
+
+    # Binary search for the minimum time required.
+    while lo < hi:
+        mid = (lo + hi) // 2
+        if can_repair(mid):
+            hi = mid
+        else:
+            lo = mid + 1
+
+    return lo
+
+print(repairCars([4,2,3,1],10))
