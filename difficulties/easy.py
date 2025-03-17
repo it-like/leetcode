@@ -226,3 +226,14 @@ def maximumCount(nums: list)-> int:
     return max(negatives, len(nums) - zeros - negatives)
 
 #print(maximumCount([5,20,66,1314]))
+
+
+
+
+'''2206. Divide Array into Equal Pairs'''
+def divideArray(nums) -> bool:
+    nums = sorted(nums)
+    for i in range(1,len(nums), 2):
+        if nums[i] != nums[i-1]:
+            return False
+    return True        
