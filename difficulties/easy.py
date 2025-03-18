@@ -237,3 +237,4 @@ def divideArray(nums) -> bool:
         if nums[i] != nums[i-1]:
             return False
     return True        
+

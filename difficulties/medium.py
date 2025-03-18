@@ -513,5 +513,18 @@ def repairCars( ranks, cars: int) -> int:
             lo = mid + 1
 
     return lo
+#print(repairCars([4,2,3,1],10))
 
-print(repairCars([4,2,3,1],10))
+
+'''2401. Longest Nice Subarray'''
+def longestNiceSubarray(self, nums) -> int:
+    cur, res, l = 0,0,0
+    for r in range(len(nums)):
+        while cur & nums[r]:
+            cur = cur ^ nums[l]
+            l += 1
+        res = max(res, r-l + 1) 
+        cur = cur ^ nums[r]
+    return res 
+
+
