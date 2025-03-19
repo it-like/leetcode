@@ -238,3 +238,8 @@ def divideArray(nums) -> bool:
             return False
     return True        
 
+
+#a = [1,2,3,4]
+#a[:3] = [0,1,1]
+#a[0] = 0 if 1 else 1 
+#print(a)

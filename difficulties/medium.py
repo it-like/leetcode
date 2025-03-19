@@ -528,3 +528,29 @@ def longestNiceSubarray(self, nums) -> int:
     return res 
 
 
+
+
+
+def minOperations(nums) -> int:
+    l,r = 0, len(nums) -1
+    flips = 0
+    def flip(index):
+        if nums[index] == 0:
+            nums[index] = 1
+        else: 
+            nums[index] = 0
+    while r-l >= 2: # looking at subsets less than 3, leave
+        if nums[l] != 1:
+            flips += 1
+            for i in range(l,l+3):
+                flip(i)
+        l += 1
+        if nums[r] != 1:
+            flips += 1
+            for i in range(3):
+                flip(r-i)
+        r -= 1
+    for num in nums:
+        if num == 0:
+            return -1
+    return flips
