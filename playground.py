@@ -67,3 +67,11 @@ print(f"Result: {result_rec}")
 print(f"Total time for {iterations} iterations of btmup: {end_time - start_time:.4f} seconds")
 print(f"Average time per call: {(end_time - start_time) / iterations:.8f} seconds\n")
 
+
+
+
+
+import math
+for n in range(20):
+    e += (1**n)/math.factorial(n)
+print(e)
