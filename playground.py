@@ -30,7 +30,8 @@ def fib_bot_up(n:int)->int:
     for i in range(2,n):
         btmup[i] = btmup[i-1] + btmup[i-2]
     return btmup[n-1]
-
+'''
+TESTING DP PROBLEMS
 n = 10
 iterations = 500000
 
@@ -40,13 +41,9 @@ for _ in tqdm(range(iterations), desc="fib_mem rec"):
     result_mem = fib_rec(n)
 end_time = time.time()
 
-
-
 print(f"Result: {result_mem}")
 print(f"Total time for {iterations} iterations of fib_mem: {end_time - start_time:.4f} seconds")
 print(f"Average time per call: {(end_time - start_time) / iterations:.8f} seconds")
-
-
 
 print("Running fib_mem (memoized recursion):")
 start_time = time.time()
@@ -66,12 +63,18 @@ end_time = time.time()
 print(f"Result: {result_rec}")
 print(f"Total time for {iterations} iterations of btmup: {end_time - start_time:.4f} seconds")
 print(f"Average time per call: {(end_time - start_time) / iterations:.8f} seconds\n")
+'''
+
+
+# Euler approximation
+#e = 0
+#print(e*2)
+#import math
+#for n in range(20):
+#    e += (2**n)/math.factorial(n)
+#print(e) 
 
 
 
 
 
-import math
-for n in range(20):
-    e += (1**n)/math.factorial(n)
-print(e)

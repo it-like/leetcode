@@ -554,3 +554,44 @@ def minOperations(nums) -> int:
         if num == 0:
             return -1
     return flips
+
+
+
+#ingred = [["yeast","flour"]]
+#al = ["yeast","flour","corn"]
+#print(set(ingred[0]).issubset(al))
+
+
+def findAllRecipes(recipes, ingredients , supplies):
+    # First idea is to use hashtables, still valid
+    # but will be difficult to see if we can create everything
+
+    # This does not work if the occurance is not ordered
+    '''
+    create = []
+    for r in range(len(recipes)):
+        if set(ingredients[r]).issubset(supplies) and not set(recipes[r]).issubset(supplies):
+            supplies.append(recipes[r])
+            create.append(recipes[r])
+    return create
+    '''
+    # Use BFS approach instead
+
+    can_cook = {supply:True for supply in supplies}
+    recipe_map = {r:i for i,r in enumerate(recipes)}
+    def dfs(r):
+        if r in can_cook:
+            return can_cook[r]
+        if r not in recipe_map:
+            return False
+
+        can_cook[r] = False
+        for nei in ingredients[recipe_map[r]]:
+            if not dfs(nei):
+                return False
+        can_cook[r] = True
+        return True
+
+    return [r for r in recipes if dfs(r)]
+
+
