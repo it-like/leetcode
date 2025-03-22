@@ -174,34 +174,34 @@ def punishmentNumber( n: int) -> int:
 
 
 
-class Solution:
-    def constructDistancedSequence(self, n: int):
-        # The length of the sequence is 2*n - 1
-        trial = [0] * ((2 * n) - 1)
-        
-        def backtrack(num: int) -> bool:
-            # Base case: 
-            if num == 1:
-                for i in range(len(trial)):
-                    if trial[i] == 0:
-                        trial[i] = 1
-                        return True
-                    
-            for i in range(len(trial) - num):
-                if trial[i] == 0 and trial[i + num ] == 0:
-                    
-                    trial[i] = num
-                    trial[i + num] = num
-                    # Recursively place the next smaller number
-                    if backtrack(num - 1):
-                        return True
-                    trial[i] = 0
-                    trial[i + num ] = 0
-            
-            return False
 
-        backtrack(n)
-        return trial
+def constructDistancedSequence( n: int):
+    # The length of the sequence is 2*n - 1
+    trial = [0] * ((2 * n) - 1)
+    
+    def backtrack(num: int) -> bool:
+        # Base case: 
+        if num == 1:
+            for i in range(len(trial)):
+                if trial[i] == 0:
+                    trial[i] = 1
+                    return True
+                
+        for i in range(len(trial) - num):
+            if trial[i] == 0 and trial[i + num ] == 0:
+                
+                trial[i] = num
+                trial[i + num] = num
+                # Recursively place the next smaller number
+                if backtrack(num - 1):
+                    return True
+                trial[i] = 0
+                trial[i + num ] = 0
+        
+        return False
+
+    backtrack(n)
+    return trial
 
 
 #print(Solution().constructDistancedSequence(5))
@@ -406,7 +406,7 @@ def numberOfAlternatingGroups( colors, k: int) -> int:
 
 
 '''3306. Count Substring Containing Every Vowel and K consonants II'''
-def countOfSubstrings(self, word: str, k: int) -> int:
+def countOfSubstrings( word: str, k: int) -> int:
     # Some flag logic, move if flag not there
     # This is a sliding window problem,
     # add each rhs and subtract the lhs
@@ -467,7 +467,7 @@ def numberOfSubstrings(s: str) -> int:
 
 
 
-def rob(self, nums) -> int:
+def rob(nums) -> int:
 
     if not nums:
         return 0
@@ -517,7 +517,7 @@ def repairCars( ranks, cars: int) -> int:
 
 
 '''2401. Longest Nice Subarray'''
-def longestNiceSubarray(self, nums) -> int:
+def longestNiceSubarray(nums) -> int:
     cur, res, l = 0,0,0
     for r in range(len(nums)):
         while cur & nums[r]:
@@ -593,5 +593,49 @@ def findAllRecipes(recipes, ingredients , supplies):
         return True
 
     return [r for r in recipes if dfs(r)]
+
+edges = [[0,1],[0,2],[1,2],[3,4]]
+fx = [[] for _ in range(5)] 
+for edge in edges:
+    fx[edge[0]].append(edge[1])
+print(fx)
+
+
+
+'''2685. Count the Number of Complete Components'''
+def countCompleteComponents( n: int, edges) -> int:
+    graph = [[] for _ in range(n)]
+    for u, v in edges:
+        graph[u].append(v)
+        graph[v].append(u)
+    
+    visited = [False] * n
+    complete_components = 0
+    def dfs(node: int, component) -> None:
+        visited[node] = True
+        component.append(node)
+        for neighbor in graph[node]:
+            if not visited[neighbor]:
+                dfs(neighbor, component)
+    
+    for i in range(n):
+        if not visited[i]:
+            component = []
+            dfs(i, component)
+            comp_set = set(component)
+            is_complete = True
+            for node in component:
+                if sum(1 for nb in graph[node] if nb in comp_set) != len(component) - 1:
+                    is_complete = False
+                    break
+            if is_complete:
+                complete_components += 1
+
+    return complete_components
+
+                
+                
+        
+        
 
 
