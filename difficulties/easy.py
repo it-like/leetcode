@@ -243,3 +243,15 @@ def divideArray(nums) -> bool:
 #a[:3] = [0,1,1]
 #a[0] = 0 if 1 else 1 
 #print(a)
+
+
+'''1450. Number of Students Doing Homework at a Given Time'''
+
+def busyStudent(startTime, endTime, queryTime: int) -> int:
+    # -----s-------e----
+    # --------t---------
+    res = 0
+    for start, end in zip(startTime, endTime):
+        if start <= queryTime <=end:
+            res +=1 
+    return res  
