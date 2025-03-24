@@ -637,5 +637,26 @@ def countCompleteComponents( n: int, edges) -> int:
                 
         
         
+'''3169. Count Days Without Meetings'''
 
+def countDays(days: int, meetings) -> int:
+    # Idea, have a long list
+    # remove slices, count the remaining part
+    pos = [1] * days 
+    print(pos)
+    for start,end in meetings:
+        pos[start-1:end] = [0] * (end-start + 1)
+    return sum(pos)
+    
+def countDays(days: int, meetings) -> int:    
+        meetings.sort()
+        tail = 0
+
+        for start, end in meetings:
+            start = max(start, tail + 1)
+            length = end - start + 1
+            days -= max(length, 0)
+            tail = max(tail, end)
+        return days
+        
 
