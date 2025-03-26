@@ -246,7 +246,6 @@ def divideArray(nums) -> bool:
 
 
 '''1450. Number of Students Doing Homework at a Given Time'''
-
 def busyStudent(startTime, endTime, queryTime: int) -> int:
     # -----s-------e----
     # --------t---------
@@ -255,3 +254,8 @@ def busyStudent(startTime, endTime, queryTime: int) -> int:
         if start <= queryTime <=end:
             res +=1 
     return res  
+
+
+'''2769. Find the Maximum Achievable Number'''
+def theMaximumAchievableX(num: int, t: int) -> int:
+    return num + 2*t
