@@ -259,3 +259,14 @@ def busyStudent(startTime, endTime, queryTime: int) -> int:
 '''2769. Find the Maximum Achievable Number'''
 def theMaximumAchievableX(num: int, t: int) -> int:
     return num + 2*t
+
+
+'''1920. Build Array from Permutation'''
+def buildArray(nums):
+    # Guaranteed to find the first best list
+    # Can be done in place prett easily
+    one = nums.copy()
+
+    for element in nums:
+        one[element] = nums[nums[element]]
+    return one            
