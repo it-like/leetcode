@@ -270,3 +270,15 @@ def buildArray(nums):
     for element in nums:
         one[element] = nums[nums[element]]
     return one            
+
+
+
+'''1512. Number of Good Pairs'''
+def numIdenticalPairs(self, nums) -> int:
+    l = len(nums) 
+    res = 0
+    for i in range(l):
+        for j in range(l):
+            if nums[i] == nums[j] and i<j:
+                res +=1
+    return res
