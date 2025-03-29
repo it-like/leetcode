@@ -282,3 +282,20 @@ def numIdenticalPairs(self, nums) -> int:
             if nums[i] == nums[j] and i<j:
                 res +=1
     return res
+
+
+'''1431. Kids With The Greatest Number of Candies'''
+
+def kidsWithCandies(candies, extraCandies: int):
+    res = []
+    for cur_kid in candies:
+        flag = False
+        for kid in range(len(candies)):
+            if cur_kid + extraCandies < candies[kid]:
+                flag = True
+                break
+        if flag:
+            res.append(False)
+        else:
+            res.append(True)
+    return res
