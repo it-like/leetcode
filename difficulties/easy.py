@@ -299,3 +299,9 @@ def kidsWithCandies(candies, extraCandies: int):
         else:
             res.append(True)
     return res
+
+
+
+'''2469. Convert the Temperature'''
+def convertTemperature(celsius: float):
+    return [celsius + 273.15, celsius * 1.80 + 32.00]
