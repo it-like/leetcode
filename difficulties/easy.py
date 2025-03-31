@@ -290,7 +290,7 @@ def kidsWithCandies(candies, extraCandies: int):
     res = []
     for cur_kid in candies:
         flag = False
-        for kid in range(len(candies)):
+        for kid in range(len(candies)): 
             if cur_kid + extraCandies < candies[kid]:
                 flag = True
                 break
