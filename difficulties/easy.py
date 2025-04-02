@@ -305,3 +305,33 @@ def kidsWithCandies(candies, extraCandies: int):
 '''2469. Convert the Temperature'''
 def convertTemperature(celsius: float):
     return [celsius + 273.15, celsius * 1.80 + 32.00]
+
+'''1365. How Many Numbers Are Smaller Than The Current Number'''
+
+def smallerNumbersThanCurrent(nums):
+    l = len(nums)
+    ret = [0] * l
+    for i in range(l):
+        for rest in range(l):
+            if nums[i] > nums[rest] and i != rest:
+                ret[i] += 1
+    return ret
+
+        
+
+
+
+def maximumTripletValue(nums) -> int:
+    # Greedy backwards?
+
+    #for mul in reversed(nums): # Try to find largest from behind
+
+    left = nums[0]
+    res = 0
+    for i in range(1,len(nums)):
+        if nums[i] > left:
+            left = nums[i]
+            continue
+        for k in range(i + 1, len(nums)):
+            res = max(res, (left - nums[i]) * nums[k])
+    return res
