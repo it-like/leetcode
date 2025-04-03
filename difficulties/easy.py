@@ -307,7 +307,6 @@ def convertTemperature(celsius: float):
     return [celsius + 273.15, celsius * 1.80 + 32.00]
 
 '''1365. How Many Numbers Are Smaller Than The Current Number'''
-
 def smallerNumbersThanCurrent(nums):
     l = len(nums)
     ret = [0] * l
@@ -335,3 +334,23 @@ def maximumTripletValue(nums) -> int:
         for k in range(i + 1, len(nums)):
             res = max(res, (left - nums[i]) * nums[k])
     return res
+
+
+
+'''2643. Row With Maximum Ones'''
+def rowAndMaximumOnes(mat):
+    ret = 0
+    i = 0
+    r = 0
+    for row in mat:
+        
+        cur = 0
+        for element in row:
+            if element == 1:
+                cur +=1
+            if cur > ret: # Ensure smallest row number
+                i = r
+                ret = cur
+        r += 1
+        
+    return [i,ret]
