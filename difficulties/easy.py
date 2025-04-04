@@ -354,3 +354,16 @@ def rowAndMaximumOnes(mat):
         r += 1
         
     return [i,ret]
+
+
+
+'''1880. Check if Word Equals Summation of Two Words'''
+def isSumEqual( firstWord: str, secondWord: str, targetWord: str) -> bool:
+    # a = 97, everything is above that
+    def ascii(string: str) -> int:
+        ret = 0
+        for i,char in enumerate(reversed(string)):
+                ret += (ord(char) - 97) * (10 ** i)
+        return ret
+    
+    return ascii(firstWord) + ascii(secondWord) == ascii(targetWord)
