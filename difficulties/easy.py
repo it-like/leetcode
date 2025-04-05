@@ -367,3 +367,38 @@ def isSumEqual( firstWord: str, secondWord: str, targetWord: str) -> bool:
         return ret
     
     return ascii(firstWord) + ascii(secondWord) == ascii(targetWord)
+
+
+
+'''1863. Sum of All Subset XOR Totals'''
+def subsetXORSum(nums) -> int:
+    # Create a function which creates a power set?
+    # Or maybe just loop it, same complexity?
+    '''
+    def xor(elems: list)->:
+        re = elems[0]
+        for i in range(1,len(elems)):
+            re ^= elems[i] 
+        return re
+
+
+    
+    def dfs(cur, i, csum):
+        csum += xor(cur[:i])
+
+        for j in range(len(cur)):
+            csum = xor(cur[i:] +cur[i])
+
+
+
+
+    ret = 0
+    for i in range(len(nums)):
+        ret += dfs(nums[i:],i,0)
+    '''
+
+    def dfs(i, total):
+        if i == len(nums):
+            return total
+        return dfs(i + 1, total ^ nums[i]) + dfs(i + 1, total)
+    return dfs(0,0)
