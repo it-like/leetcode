@@ -402,3 +402,23 @@ def subsetXORSum(nums) -> int:
             return total
         return dfs(i + 1, total ^ nums[i]) + dfs(i + 1, total)
     return dfs(0,0)
+
+
+
+
+
+'''1652. Defuse the Bomb'''
+def decrypt( code, k: int):
+    ret = [0] * len(code)
+    C = len(code)
+    if k >0:
+        for i in range(C):
+            for fix in range(k):
+                ret[i] += code[(i + fix + 1)%C]
+    else:
+        for i in range(C):
+            for fix in range(abs(k)):
+                ret[i] += code[(i + -fix-1)%C]
+
+    return ret
+        
