@@ -482,3 +482,24 @@ def shortestToChar(s: str, c: str):
         min_dis = float("inf") 
         
     return res
+
+
+import math
+
+def countSymmetricIntegers(low: int, high: int) -> int:
+    # 
+    count = 0
+    for i in range(low,high+1):
+        s = str(i)
+        
+        if len(s) % 2 != 0:
+            continue
+        
+        mid = len(s) // 2
+        first_half = s[:mid]
+        second_half = s[mid:]
+        
+        # Compare the sums of the two halves
+        if sum(map(int, first_half)) == sum(map(int, second_half)):
+            count += 1
+    return count
