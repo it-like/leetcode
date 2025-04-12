@@ -503,3 +503,35 @@ def countSymmetricIntegers(low: int, high: int) -> int:
         if sum(map(int, first_half)) == sum(map(int, second_half)):
             count += 1
     return count
+
+
+
+
+
+def minimumOperations(nums) -> int:
+    # Walk up with list, if dupl
+    # Check each time if duplicates
+    def find_duplicates(elems):
+        hsh = {}
+        bl = True
+        for el in elems:
+            if el not in hsh:
+                hsh[el] = [el]
+            else:
+                bl = False
+                break
+        return bl
+
+    # find max amount of iterations
+    max_its = math.ceil(len(nums)/3)
+    ret = 0
+    for it in range(max_its):
+        if not find_duplicates(nums):
+            ret += 1
+            if len(nums) <= 3:
+                return ret
+            nums = nums[3:]
+            # Remove first 3
+        else:
+            return ret
+    return ret
