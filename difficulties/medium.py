@@ -660,3 +660,19 @@ def countDays(days: int, meetings) -> int:
         return days
         
 
+
+'''1922. Count Good Numbers'''
+def countGoodNumbers(n: int) -> int:
+    # This is definitely some type of DP.
+    # 
+    mod = 10**9 + 7
+    # Calculate the count of even and odd positions based on index (0-indexed)
+    even_count = n // 2 + (n % 2)  # even positions: index 0, 2, 4, ...
+    odd_count = n // 2             # odd positions: index 1, 3, 5, ...
+
+    # 5 valid combinations for even (0,2,4,6,8)
+    # 4 valid combinations for odd (primes) (2,3,5,7)
+    return (pow(5, even_count, mod) * pow(4, odd_count, mod)) % mod
+                
+
+
