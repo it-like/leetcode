@@ -535,3 +535,21 @@ def minimumOperations(nums) -> int:
         else:
             return ret
     return ret
+
+
+
+
+def countGoodTriplets( arr, a: int, b: int, c: int) -> int:
+    # Maybe sort? Will probably do no difference for given 
+    # the three last triplet constriant
+
+    # Three pointer
+    N = len(arr)
+    ret = 0
+    for i in range(N):
+        for j in range(i+1,N):
+            for k in range(j+1,N):
+                if abs(arr[i] - arr[j]) <= a and abs(arr[j] - arr[k]) <= b and abs(arr[i] - arr[k]) <= c:
+                    print(f'{i},{j},{k}')
+                    ret += 1
+    return ret
