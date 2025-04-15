@@ -553,3 +553,17 @@ def countGoodTriplets( arr, a: int, b: int, c: int) -> int:
                     print(f'{i},{j},{k}')
                     ret += 1
     return ret
+
+
+
+
+def finalPrices( prices):
+    n = len(prices)
+    result = prices[:]  
+    
+    for i in range(n):
+        for j in range(i + 1, n):
+            if prices[j] <= prices[i]:
+                result[i] = prices[i] - prices[j]
+                break  
+    return result
