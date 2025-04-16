@@ -567,3 +567,18 @@ def finalPrices( prices):
                 result[i] = prices[i] - prices[j]
                 break  
     return result
+
+
+
+def getSneakyNumbers(nums):
+    freq = {}
+    ret = []
+    for element in nums:
+        if element not in freq:
+            freq[element] = element
+        else:
+            ret.append(element)
+            if len(ret) == 2:
+                return ret
+            
+        
