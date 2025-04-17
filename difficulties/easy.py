@@ -582,3 +582,13 @@ def getSneakyNumbers(nums):
                 return ret
             
         
+
+
+def countPairs(nums, k: int) -> int:
+    N = len(nums)
+    cnt = 0
+    for i in range(N):
+        for j in range(i+1,N):
+            if nums[i] == nums[j] and i*j % k == 0:
+                cnt += 1
+    return cnt
