@@ -676,3 +676,33 @@ def countGoodNumbers(n: int) -> int:
                 
 
 
+
+
+
+def countFairPairs( nums, lower, upper):
+    nums.sort()                          
+
+    # count pairs (i < j) with nums[i] + nums[j] ≤ bound
+    def count_le(bound):
+        total = 0
+        j = len(nums) - 1                
+        for i in range(len(nums)):
+            while i < j and nums[i] + nums[j] > bound:
+                j -= 1                   
+            total += max(0, j - i)       
+        return total
+
+    return count_le(upper) - count_le(lower - 1)
+
+    nums = sorted(nums)
+    print(nums)
+    # Too slow
+    
+    ret = 0
+    n = len(nums)
+    for i in range(n):
+        for j in range(1+i,n):
+            if lower <= nums[i] + nums[j] <= upper:
+                ret += 1
+    return ret
+    
