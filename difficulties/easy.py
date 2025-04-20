@@ -592,3 +592,23 @@ def countPairs(nums, k: int) -> int:
             if nums[i] == nums[j] and i*j % k == 0:
                 cnt += 1
     return cnt
+
+
+
+def sumOddLengthSubarrays(arr):
+    # Dynamic programming, recursive?
+    # Perhaps also a by a loop
+    mcnt = len(arr)
+    ret = 0
+    for right in range(1, 1 + len(arr), 2): # current list length
+        l,r = 0, 0 + right
+
+        while r <= mcnt:
+            ret += sum(arr[l:r])
+            l += 1
+            r += 1
+    return ret
+
+
+        
+
