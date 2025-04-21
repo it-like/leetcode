@@ -611,4 +611,13 @@ def sumOddLengthSubarrays(arr):
 
 
         
+def differenceOfSums(self, n: int, m: int) -> int:
+    cnt1 = 0
+    cnt2 = 0
 
+    for i in range(1,n+1):
+        if i % m != 0:
+            cnt1 += i
+        else:
+            cnt2 += i
+    return cnt1 - cnt2
