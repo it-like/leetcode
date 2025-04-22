@@ -621,3 +621,15 @@ def differenceOfSums(self, n: int, m: int) -> int:
         else:
             cnt2 += i
     return cnt1 - cnt2
+
+
+
+def findClosest( x: int, y: int, z: int) -> int:
+    d13 = abs(x-z)
+    d23 = abs(y-z)
+    if d13 == d23:
+        return 0
+    if d13 > d23:
+        return 2
+    else:
+        return 1
