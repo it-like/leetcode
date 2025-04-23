@@ -633,3 +633,19 @@ def findClosest( x: int, y: int, z: int) -> int:
         return 2
     else:
         return 1
+
+
+def kthDistinct(arr, k: int) -> str:
+    cnt = {}
+    for i in range(len(arr)):
+        s = arr[i]
+        cnt[s] = cnt.get(s, 0) + 1
+
+    seen = 0
+    for s in arr:
+        if cnt[s] == 1:
+            seen += 1
+            if seen == k:
+                return s
+
+    return ""
