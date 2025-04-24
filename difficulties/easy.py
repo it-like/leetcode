@@ -649,3 +649,18 @@ def kthDistinct(arr, k: int) -> str:
                 return s
 
     return ""
+
+
+def hasPathSum(root, targetSum: int) -> bool:
+    # dfs, when list empty 
+    
+    def dfs(cur, sum)-> bool:
+        if not cur:
+            return False
+        sum += cur.val
+        if not cur.left and not cur.right:
+            return sum == targetSum
+
+        return dfs(cur.left, sum) or dfs (cur.right, sum)
+
+    return dfs(root, 0)
