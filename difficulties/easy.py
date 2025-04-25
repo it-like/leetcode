@@ -664,3 +664,18 @@ def hasPathSum(root, targetSum: int) -> bool:
         return dfs(cur.left, sum) or dfs (cur.right, sum)
 
     return dfs(root, 0)
+
+
+
+
+def getFinalState( nums, k: int, multiplier: int):
+    for _ in range(k):
+        val = float('inf')
+        ind = 0
+        for i, num in enumerate(nums):
+            if num < val:
+                val = num
+                ind = i
+        nums[ind] = nums[ind] * multiplier
+    return nums
+
