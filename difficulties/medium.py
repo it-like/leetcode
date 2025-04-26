@@ -710,21 +710,17 @@ def countFairPairs( nums, lower, upper):
 
 
 def minOperations(grid, x: int) -> int:
-    length =len(grid) * len(grid[0])
     
+    length =len(grid) * len(grid[0])
+    block_size = [0] * length
+    i = 0
     base_mod = grid[0][0] % x
     for row in grid:
         for element in row:
             if element % x != base_mod:
                 return -1
-    
-    block_size = [0] * length
-    i = 0
-    for row in grid:
-        for element in row:
             block_size[i] = element // x
             i += 1
-    
     
     block_size.sort()
     median = block_size[ length // 2 ]
