@@ -679,3 +679,10 @@ def getFinalState( nums, k: int, multiplier: int):
         nums[ind] = nums[ind] * multiplier
     return nums
 
+
+def countSubarrays(nums) -> int:
+    ret = 0
+    for i in range(len(nums) - 2):
+        if nums[i] + nums[i+2] == nums[i+1]/2:
+            ret += 1
+    return ret
