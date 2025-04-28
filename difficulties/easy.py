@@ -707,3 +707,12 @@ def findWordsContaining(self, words, x: str):
     #    for j in range(len(word[i])):
     #        if word[i][j] == x:
     #            ret.append(i)
+
+
+def convertDateToBinary( date: str) -> str:
+    year = bin(int(date[:4]))[2:]
+    month = bin(int(date[5:7]))[2:]
+    day = bin(int(date[8:]))[2:]
+    print(f"{year}-{month}-{day}")
+    return f"{year}-{month}-{day}"
+    
