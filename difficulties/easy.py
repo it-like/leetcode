@@ -686,3 +686,24 @@ def countSubarrays(nums) -> int:
         if nums[i] + nums[i+2] == nums[i+1]/2:
             ret += 1
     return ret
+
+
+
+
+def findWordsContaining(self, words, x: str):
+    ret = []
+
+    i = 0
+    for word in words:
+        
+        for letter in word:
+            if letter == x:
+                ret.append(i)
+                break
+        i += 1
+    return ret
+
+    #for i in range(len(words)):
+    #    for j in range(len(word[i])):
+    #        if word[i][j] == x:
+    #            ret.append(i)
