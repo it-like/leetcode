@@ -730,3 +730,24 @@ def minOperations(grid, x: int) -> int:
         ops += abs(q - median)
     
     return ops
+
+
+
+def countSubarrays(nums, k: int) -> int:
+    # Sliding window!
+    # First find max in nums
+    m = max(nums) # O(n)
+    l = 0
+    ret = 0
+    for num in nums:
+        if num == m:
+            k -= 1
+        while k == 0:
+            if nums[l] == m:
+                k += 1
+            l += 1
+        ret += l
+
+    return ret 
+    #  l     r
+    # [1,3,2,3,3]
