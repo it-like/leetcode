@@ -716,3 +716,14 @@ def convertDateToBinary( date: str) -> str:
     print(f"{year}-{month}-{day}")
     return f"{year}-{month}-{day}"
     
+
+
+
+def findNumbers(nums) -> int:
+    # Easier to see in binary?
+    # See how many times it has to be divided?
+    ret = 0
+    for num in nums:
+        if len(str(num)) % 2 == 0:
+            ret += 1
+    return ret
