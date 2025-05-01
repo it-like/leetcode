@@ -751,3 +751,16 @@ def countSubarrays(nums, k: int) -> int:
     return ret 
     #  l     r
     # [1,3,2,3,3]
+
+
+
+def minOperations( boxes: str):
+    Lbox = len(boxes)
+    ret = [0] * Lbox
+    for i in range(Lbox):
+        for j in range(Lbox):
+            if i ==j:
+                continue
+            
+            ret[i] += int(boxes[j]) * abs(i-j)
+    return ret
