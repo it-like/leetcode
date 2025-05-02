@@ -764,3 +764,9 @@ def minOperations( boxes: str):
             
             ret[i] += int(boxes[j]) * abs(i-j)
     return ret
+
+
+def findArray(pref):
+    for i in range(len(pref)-1, 0,-1):
+        pref[i] ^= pref[i-1]
+    return pref
