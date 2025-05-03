@@ -1,3 +1,4 @@
+import math
 '''medium problems'''
 #import numpy as np
 
@@ -770,3 +771,43 @@ def findArray(pref):
     for i in range(len(pref)-1, 0,-1):
         pref[i] ^= pref[i-1]
     return pref
+
+
+
+
+def minDominoRotations(tops, bottoms) -> int:
+    # First see if a common value can be found on top or bottom
+    # if a solution is feasible
+    # The solution is unique, below is proof (Always look at top?)
+    #   [2,3,3,2,3] 
+    #   [3,2,2,3,2]
+
+    # map[value] = freq
+
+
+    # From first pair it is NECESSARY the rest are either one of those,
+    # if a new pair is neither of those, return -1
+    # need top and bottom freq to find where to swap
+
+    # Either top go to bottom, or bottom go to top
+    # Can either solve for tops[0] or bottoms[0]
+    # Consider only two potential target values: the first top or bottom
+    candidates = [tops[0], bottoms[0]]
+    ans = math.inf
+    
+    # For each candidate, count rotations needed or detect impossibility
+    
+    for cand in candidates:
+        rot_top = rot_bot = 0
+        for t, b in zip(tops, bottoms):
+            if t != cand and b != cand:
+                rot_top = rot_bot = math.inf
+                break
+            if t != cand:
+                rot_top += 1
+            if b != cand:
+                rot_bot += 1
+        # pick the cheaper of making all tops==cand or bottoms==cand
+        ans = min(ans, rot_top, rot_bot)
+
+    return -1 if ans == math.inf else ans
