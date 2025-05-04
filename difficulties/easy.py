@@ -727,3 +727,27 @@ def findNumbers(nums) -> int:
         if len(str(num)) % 2 == 0:
             ret += 1
     return ret
+
+
+
+
+def numEquivDominoPairs(dominoes) -> int:
+    # sort each domino s.t. smallest first
+    count = {}
+    for domino in dominoes:
+        a,b = min(domino),max(domino)
+        ind = str(a) + str(b)
+        if ind not in count:
+            count[ind] = 0
+        else:
+            if count[ind] == 0:
+                count[ind] = 2
+            else:
+                count[ind] += 1
+    # Look at all values where k>0
+    ret = 0
+    for val in count.values():
+        if val >= 2:
+            ret += int(val*(val-1)/2)
+    return ret
+        
