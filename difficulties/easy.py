@@ -759,3 +759,13 @@ def sumOfMultiples(n: int) -> int:
             ret += i
     return ret
 
+
+
+
+def restoreString( s: str, indices) -> str:
+    ret = [0] * len(indices)
+    k = 0
+    for i in indices:
+        ret[i] = s[k]
+        k+=1
+    return "".join(ret)
