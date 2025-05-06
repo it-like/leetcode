@@ -769,3 +769,13 @@ def restoreString( s: str, indices) -> str:
         ret[i] = s[k]
         k+=1
     return "".join(ret)
+
+
+
+
+def buildArray(nums):
+    N = len(nums)
+    ret = [0] * N
+    for i in range(N):
+        ret[i] = nums[nums[i]]
+    return ret
