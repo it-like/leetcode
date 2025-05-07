@@ -779,3 +779,13 @@ def buildArray(nums):
     for i in range(N):
         ret[i] = nums[nums[i]]
     return ret
+
+
+
+
+def runningSum(nums):
+    run = 0
+    for i in range(len(nums)):
+        run += nums[i]
+        nums[i] = run
+    return nums
