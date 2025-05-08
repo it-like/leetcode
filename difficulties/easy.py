@@ -709,6 +709,7 @@ def findWordsContaining(self, words, x: str):
     #            ret.append(i)
 
 
+
 def convertDateToBinary( date: str) -> str:
     year = bin(int(date[:4]))[2:]
     month = bin(int(date[5:7]))[2:]
@@ -761,7 +762,6 @@ def sumOfMultiples(n: int) -> int:
 
 
 
-
 def restoreString( s: str, indices) -> str:
     ret = [0] * len(indices)
     k = 0
@@ -789,3 +789,27 @@ def runningSum(nums):
         run += nums[i]
         nums[i] = run
     return nums
+
+
+
+def largestLocal(grid):
+    # Try brute force
+    N = len(grid)
+    ret = []
+    k,l = 0,0
+    visited = []
+    for i in range(1,N-1):
+        temp_r = []
+        for j in range(1,N-1):
+            temp =0
+
+            for k in range(i-1,i+2):
+                for l in range(j-1, j+2):
+                    temp = max(temp,grid[k][l])
+            temp_r.append(temp)
+        ret.append(temp_r)
+
+    return ret
+            
+
+
