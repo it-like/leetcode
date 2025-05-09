@@ -812,4 +812,10 @@ def largestLocal(grid):
     return ret
             
 
-
+def numberOfPairs(nums1, nums2, k: int) -> int:
+    ret = 0
+    for n1 in nums1:
+        for n2 in nums2:
+            if n1 % (n2*k)==0:
+                ret +=1
+    return ret
