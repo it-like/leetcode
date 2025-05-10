@@ -819,3 +819,12 @@ def numberOfPairs(nums1, nums2, k: int) -> int:
             if n1 % (n2*k)==0:
                 ret +=1
     return ret
+
+
+
+def decompressRLElist(nums):
+    ret = []
+    for i in range(0, len(nums), 2):
+        for j in range(nums[i]):
+            ret.append(nums[i+1])
+    return ret
