@@ -828,3 +828,19 @@ def decompressRLElist(nums):
         for j in range(nums[i]):
             ret.append(nums[i+1])
     return ret
+
+
+
+
+def threeConsecutiveOdds(arr) -> bool:
+    cnt = 0
+    for a in arr:
+        if a % 2 != 0: # odd found inc cnt
+            cnt += 1
+            if cnt ==3:
+                return True
+        else:         # even->reset cnt
+            cnt = 0
+
+    return False
+
