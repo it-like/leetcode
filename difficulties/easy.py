@@ -844,3 +844,23 @@ def threeConsecutiveOdds(arr) -> bool:
 
     return False
 
+
+
+def findEvenNumbers(digits):
+    # Return permutation or make a tree structure
+    N = len(digits)
+    ret = set()
+    for l in range(N):
+        if digits[l] == 0: # Not non-zero
+            continue
+        for c in range(N):
+            if l == c:
+                continue
+            for r in range(N):
+                if r == l or r == c:
+                    continue
+                if digits[r] % 2 != 0: # not even
+                    continue
+                num = digits[l]*100 + digits[c]*10 + digits[r]
+                ret.add(num)
+    return sorted(ret)
