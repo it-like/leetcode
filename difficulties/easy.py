@@ -864,3 +864,28 @@ def findEvenNumbers(digits):
                 num = digits[l]*100 + digits[c]*10 + digits[r]
                 ret.add(num)
     return sorted(ret)
+
+
+
+
+def transformArray(nums):
+    N = len(nums)
+    ret = [0] * N
+    l,r = 0,N-1
+    for i in range(len(nums)):
+        if nums[i] % 2 == 0: 
+            ret[l] = 0
+            l += 1
+        else:
+            ret[r] = 1
+            r -= 1
+    return ret
+
+    '''
+    for i in range(len(nums)):
+        if nums[i] % 2 == 0: 
+            nums[i] = 0
+        else:
+            nums[i] = 1
+    return sorted(nums)
+    '''
