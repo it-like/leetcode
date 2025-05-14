@@ -889,3 +889,14 @@ def transformArray(nums):
             nums[i] = 1
     return sorted(nums)
     '''
+
+
+
+
+def createTargetArray(self,nums, index):
+    N = len(nums)
+    ret = []
+
+    for i in range(N):
+        ret.insert(index[i], nums[i])
+    return ret
