@@ -892,7 +892,6 @@ def transformArray(nums):
 
 
 
-
 def createTargetArray(self,nums, index):
     N = len(nums)
     ret = []
@@ -900,3 +899,17 @@ def createTargetArray(self,nums, index):
     for i in range(N):
         ret.insert(index[i], nums[i])
     return ret
+
+
+
+
+def getLongestSubsequence(words, groups):
+    # Find longest alternating sequence in groups, always add a flipped bit!
+    res = [words[0]]
+    last = groups[0]
+
+    for w, g in zip(words[1:], groups[1:]):
+        if g != last:
+            res.append(w)
+            last = g
+    return res
