@@ -915,8 +915,7 @@ def getLongestSubsequence(words, groups):
 
 
 
-
-def numberOfEmployeesWhoMetTarget(self, hours: List[int], target: int) -> int:
+def numberOfEmployeesWhoMetTarget(hours, target: int) -> int:
     ret = 0
     for h in hours:
         if h >= target:
