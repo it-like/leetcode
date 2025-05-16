@@ -95,7 +95,7 @@ def subarraySum(nums) -> int:
 '''83. Removed Duplicate from Sorted List'''
 # Definition for singly-linked list.
 class ListNode:
-    def __init__(self, val=0, next=None):
+    def __init__(val=0, next=None):
         self.val = val
         self.next = next
 
@@ -274,7 +274,7 @@ def buildArray(nums):
 
 
 '''1512. Number of Good Pairs'''
-def numIdenticalPairs(self, nums) -> int:
+def numIdenticalPairs(nums) -> int:
     l = len(nums) 
     res = 0
     for i in range(l):
@@ -611,7 +611,7 @@ def sumOddLengthSubarrays(arr):
 
 
         
-def differenceOfSums(self, n: int, m: int) -> int:
+def differenceOfSums(n: int, m: int) -> int:
     cnt1 = 0
     cnt2 = 0
 
@@ -690,7 +690,7 @@ def countSubarrays(nums) -> int:
 
 
 
-def findWordsContaining(self, words, x: str):
+def findWordsContaining(words, x: str):
     ret = []
 
     i = 0
@@ -892,7 +892,7 @@ def transformArray(nums):
 
 
 
-def createTargetArray(self,nums, index):
+def createTargetArray(nums, index):
     N = len(nums)
     ret = []
 
