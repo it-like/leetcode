@@ -902,7 +902,6 @@ def createTargetArray(self,nums, index):
 
 
 
-
 def getLongestSubsequence(words, groups):
     # Find longest alternating sequence in groups, always add a flipped bit!
     res = [words[0]]
@@ -913,3 +912,13 @@ def getLongestSubsequence(words, groups):
             res.append(w)
             last = g
     return res
+
+
+
+
+def numberOfEmployeesWhoMetTarget(self, hours: List[int], target: int) -> int:
+    ret = 0
+    for h in hours:
+        if h >= target:
+            ret +=1
+    return ret
