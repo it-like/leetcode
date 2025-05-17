@@ -811,3 +811,39 @@ def minDominoRotations(tops, bottoms) -> int:
         ans = min(ans, rot_top, rot_bot)
 
     return -1 if ans == math.inf else ans
+
+
+
+
+def sortColors(nums):
+    """
+    Do not return anything, modify nums in-place instead.
+    """
+    # first idea is to count the freq, and then swap 
+    # pattern on size, can utilize >
+    # Max len of n is 300, so complexty can probably grow pretty large
+    # Some double pointer?
+
+    # brute force, first find move all zeros to beginning
+
+    fr = [0,0,0]
+    for num in nums:
+        fr[num] += 1
+
+    N = len(nums)
+
+    for i in range(N):
+        if i < fr[0]:
+            want = 0
+        elif i < fr[0] + fr[1]:
+            want = 1
+        else:
+            want = 2
+
+        if nums[i] == want:
+            continue
+
+        for j in range(i + 1, N):
+            if nums[j] == want:
+                nums[i], nums[j] = nums[j], nums[i]
+                break
