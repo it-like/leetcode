@@ -921,3 +921,22 @@ def numberOfEmployeesWhoMetTarget(hours, target: int) -> int:
         if h >= target:
             ret +=1
     return ret
+
+
+
+
+
+def triangleType(nums) -> str:
+    nums = sorted(nums)
+
+    if nums[0] + nums[1] <= nums[2]:
+        return "none"
+    
+
+    if nums[0] == nums[2]:
+        return "equilateral"
+    
+    if nums[0] == nums[1] or nums[1] == nums[2]:
+        return "isosceles"
+
+    return "scalene"
