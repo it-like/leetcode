@@ -925,7 +925,7 @@ def numberOfEmployeesWhoMetTarget(hours, target: int) -> int:
 
 
 
-
+    
 def triangleType(nums) -> str:
     nums = sorted(nums)
 

@@ -847,3 +847,23 @@ def sortColors(nums):
             if nums[j] == want:
                 nums[i], nums[j] = nums[j], nums[i]
                 break
+
+
+
+
+def isZeroArray(nums, queires) -> bool:
+    N = len(nums)
+    diff = [0] * (N + 1)
+    # build difference array of coverage counts
+    for l, r in queries:
+        diff[l] += 1
+        if r + 1 < N:
+            diff[r + 1] -= 1
+    
+    # prefix-sum + check on the fly
+    cov = 0
+    for i, need in enumerate(nums):
+        cov += diff[i]
+        if cov < need:
+            return False  # not enough decrements to bring nums[i] to zero
+    return True
