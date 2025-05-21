@@ -940,3 +940,18 @@ def triangleType(nums) -> str:
         return "isosceles"
 
     return "scalene"
+
+
+
+def reversePrefix(word: str, ch: str) -> str:
+    
+    if ch not in word:
+        return word
+
+    i = 0
+    while i < len(word):
+        if word[i] == ch:
+            break
+        i += 1
+        
+    return word[0:i+1][::-1] + word[i+1:]
