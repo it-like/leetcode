@@ -955,3 +955,22 @@ def reversePrefix(word: str, ch: str) -> str:
         i += 1
         
     return word[0:i+1][::-1] + word[i+1:]
+
+
+
+
+
+def countMatches(items, ruleKey: str, ruleValue: str) -> int:
+    if ruleKey == "type":
+        ind = 0
+    elif ruleKey == "color":
+        ind = 1
+    else:
+        ind = 2
+    cnt = 0
+    for item in items:
+        if item[ind] == ruleValue:
+            cnt +=1
+
+    return cnt
+            
