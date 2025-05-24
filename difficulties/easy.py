@@ -959,7 +959,6 @@ def reversePrefix(word: str, ch: str) -> str:
 
 
 
-
 def countMatches(items, ruleKey: str, ruleValue: str) -> int:
     if ruleKey == "type":
         ind = 0
@@ -974,3 +973,15 @@ def countMatches(items, ruleKey: str, ruleValue: str) -> int:
 
     return cnt
             
+
+# First already completed problem! epic
+
+def findWordsContaining(words, x):
+    ret = []
+
+    i = 0
+    for word in words:
+        if x in word:
+            ret.append(i)
+        i +=1
+    return ret
