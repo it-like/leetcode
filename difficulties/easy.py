@@ -985,3 +985,12 @@ def findWordsContaining(words, x):
             ret.append(i)
         i +=1
     return ret
+
+
+
+def leftRightDifference(nums):
+    N = len(nums)
+    ret = []
+    for i in range(N):
+        ret.append(abs(sum(nums[0:i])-sum(nums[i+1:N+1])))
+    return ret
