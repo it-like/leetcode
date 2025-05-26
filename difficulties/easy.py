@@ -994,3 +994,16 @@ def leftRightDifference(nums):
     for i in range(N):
         ret.append(abs(sum(nums[0:i])-sum(nums[i+1:N+1])))
     return ret
+
+
+
+def canAliceWin(nums):
+    As,Ad = 0,0
+    Bob = 0
+    for num in nums:
+        Bob += num
+        if len(str(num)) == 1:
+            As += num
+        else:
+            Ad += num
+    return As > Bob-As or Ad > Bob-Ad
