@@ -851,7 +851,7 @@ def sortColors(nums):
 
 
 
-def isZeroArray(nums, queires) -> bool:
+def isZeroArray(nums, queries) -> bool:
     N = len(nums)
     diff = [0] * (N + 1)
     # build difference array of coverage counts
@@ -867,3 +867,40 @@ def isZeroArray(nums, queires) -> bool:
         if cov < need:
             return False  # not enough decrements to bring nums[i] to zero
     return True
+
+
+
+
+
+def setZeroes(matrix) -> None:
+    """ 
+        Whole idea is that if we find any zeros, they will propagate
+        through onto the first column and row, which can be used
+        as an indicator later to fully zero out all the rows and 
+        columns of the matrix
+    """
+    m, n = len(matrix), len(matrix[0])
+    
+
+    row0_zero = any(matrix[0][j] == 0 for j in range(n))
+    col0_zero = any(matrix[i][0] == 0 for i in range(m))
+
+    for i in range(1, m):
+        for j in range(1, n):
+            if matrix[i][j] == 0:
+                matrix[i][0] = 0
+                matrix[0][j] = 0
+
+    # Zero out cells based on markers
+    for i in range(1, m):
+        for j in range(1, n):
+            if matrix[i][0] == 0 or matrix[0][j] == 0:
+                matrix[i][j] = 0
+
+    if row0_zero:
+        for j in range(n):
+            matrix[0][j] = 0
+
+    if col0_zero:
+        for i in range(m):
+            matrix[i][0] = 0
