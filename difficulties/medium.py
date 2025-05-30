@@ -904,3 +904,38 @@ def setZeroes(matrix) -> None:
     if col0_zero:
         for i in range(m):
             matrix[i][0] = 0
+
+
+
+
+def closestMeetingNode( edges, node1: int, node2: int) -> int:
+    # looks like dp/tabulation
+
+    N = len(edges)
+
+    def trace(start: int):
+        # Distance from start to each node, -1 if unreachable
+        dist = [-1] * N
+        steps = 0
+        cur = start
+        while cur != -1 and dist[cur] == -1:
+            dist[cur] = steps
+            steps += 1
+            cur = edges[cur]
+        return dist
+
+    # Get distance arrays 
+    d1 = trace(node1)
+    d2 = trace(node2)
+
+    # Find best meeting node
+    best_node = -1
+    best_dist = float('inf')
+    for i in range(N):
+        if d1[i] != -1 and d2[i] != -1:
+            maxd = max(d1[i], d2[i])
+            if maxd < best_dist:
+                best_dist = maxd
+                best_node = i
+
+    return best_node
