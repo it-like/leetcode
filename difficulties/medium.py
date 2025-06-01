@@ -962,3 +962,28 @@ def insertGreatestCommonDivisors(head):
 
         curr = new_node.next
     return head
+
+
+
+def distributeCandies(n: int, limit: int) -> int:
+    # DFS graph problem, factorial shortcut?
+    # find total, remove upper and lower?
+    # Too big to brute force, n <= 10^6
+
+    # It is a surface problem, drawing up all the constraints
+    # - (0<=x,y,z<=limit)
+    # - x + y + z = n
+
+    # inclusion–exclusion
+    
+    total = 0
+    for i in range(4):  # Four cases, 
+        sign = (-1) ** i
+        
+        l = n - i * (limit + 1) + 2
+        if l < 2:
+            binom_val = 0
+        else:
+            binom_val = math.comb(l, 2)
+        total += sign * math.comb(3, i) * binom_val
+    return total

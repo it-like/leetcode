@@ -95,7 +95,7 @@ def subarraySum(nums) -> int:
 '''83. Removed Duplicate from Sorted List'''
 # Definition for singly-linked list.
 class ListNode:
-    def __init__(val=0, next=None):
+    def __init__(self, val=0, next=None):
         self.val = val
         self.next = next
 
