@@ -1018,3 +1018,8 @@ def numberOfSteps(num: int) -> int:
             num -= 1
         ret += 1
     return ret
+
+
+def defangIPaddr(address: str) -> str:
+    ad = address.replace(".","[.]")
+    return ad
